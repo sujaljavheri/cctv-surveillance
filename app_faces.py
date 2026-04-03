@@ -5,6 +5,12 @@ import os
 video=cv2.VideoCapture(0)
 facedetect=cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
 
+if os.path.exists("data/names.pkl"):
+    os.remove("data/names.pkl")
+
+if os.path.exists("data/faces_data.pkl"):
+    os.remove("data/faces_data.pkl")
+
 faces_data=[]
 
 i=0
@@ -23,14 +29,14 @@ while True:
         crop_img=frame[y:y+h, x:x+w, :] # Crop the face from the frame
         # Resize the cropped image to 50x50 pixels
         resized_img=cv2.resize(crop_img, (50,50))
-        if len(faces_data)< 100 and i%10==0:
+        if len(faces_data) < 30 and i%5==0:
             faces_data.append(resized_img)
         i=i+1
         cv2.putText(frame, str(len(faces_data)), (50,50), cv2.FONT_HERSHEY_COMPLEX, 1, (50,50,255), 1)
         cv2.rectangle(frame, (x,y), (x+w, y+h), (50,50,255), 1)
     cv2.imshow("Frame",frame)
     k=cv2.waitKey(1)
-    if k==ord('q') or len(faces_data)==20:
+    if k==ord('q') or len(faces_data)==30:
         break
 video.release()
 cv2.destroyAllWindows()
@@ -43,13 +49,13 @@ faces_data = faces_data.reshape(len(faces_data), -1)  # auto-calculate number of
 
 
 if 'names.pkl' not in os.listdir('data/'):
-    names=[name]*100
+    names=[name]*30
     with open('data/names.pkl', 'wb') as f:
         pickle.dump(names, f)
 else:
     with open('data/names.pkl', 'rb') as f:
         names=pickle.load(f)
-    names=names+[name]*100
+    names=names+[name]*30
     with open('data/names.pkl', 'wb') as f:
         pickle.dump(names, f)
 
