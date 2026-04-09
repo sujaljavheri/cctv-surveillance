@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "node-media-server": "^4.2.4"
-  }
+  },
+  "name": "cctv-surveillance",
+  "version": "1.0.0",
+  "description": "This project is a real-time CCTV surveillance system with face recognition. It includes a Python backend and a React frontend.",
+  "main": "rtmp_server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sujaljavheri/cctv-surveillance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sujaljavheri/cctv-surveillance/issues"
+  },
+  "homepage": "https://github.com/sujaljavheri/cctv-surveillance#readme"
 }

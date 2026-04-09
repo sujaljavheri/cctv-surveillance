@@ -5,7 +5,7 @@ import DetectionControl from './components/DetectionControl';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
-// Pages: 'login' | 'register' | 'dashboard'
+// Pages: 'login' | 'register' | 'dashboard' 
 function App() {
   const [page, setPage] = useState('login');
   const [user, setUser] = useState(null);
@@ -13,7 +13,7 @@ function App() {
   const handleLogin = (userData) => {
     setUser(userData);
     setPage('dashboard');
-  };
+  }; 
 
   const handleLogout = () => {
     setUser(null);
@@ -27,7 +27,7 @@ function App() {
   if (page === 'register') {
     return <Register onRegisterSuccess={() => setPage('login')} onNavigateLogin={() => setPage('login')} />;
   }
-
+ 
   // Dashboard
   return (
     <div className="min-h-screen bg-[#060a10] flex flex-col" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
